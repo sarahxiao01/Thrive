@@ -1,0 +1,157 @@
+To get started run the following SQL commands:
+
+CREATE DATABASE misc;
+GRANT ALL ON misc.* TO 'abc'@'localhost' IDENTIFIED BY 'zap';
+GRANT ALL ON misc.* TO 'abc'@'127.0.0.1' IDENTIFIED BY 'zap';
+
+USE misc; (Or select misc in phpMyAdmin)
+
+CREATE TABLE users (
+   user_id INTEGER NOT NULL
+     AUTO_INCREMENT KEY,
+   name VARCHAR(128),
+   email VARCHAR(128),
+   password VARCHAR(128),
+   INDEX(email)
+) ENGINE=InnoDB CHARSET=utf8;
+
+
+CREATE TABLE users (
+   user_id INTEGER NOT NULL
+     AUTO_INCREMENT KEY,
+   name VARCHAR(128),
+   email VARCHAR(128),
+   password VARCHAR(128),
+   INDEX(email)
+) ENGINE=InnoDB CHARSET=utf8;
+
+INSERT INTO `Courses` (`course_id`, `name`, `course_no`) VALUES (NULL, 'CS-UY 1134', 'Data Structures'), (NULL, 'CS-UY 2214', 'Computer Architecture');
+
+
+group chat 
+direct message 
+
+
+
+
+profile 
+
+user_info 
+
+notes
+user_id 
+content 
+(display)
+
+course list 
+
+
+((messages))
+
+
+events 
+event_id creator_id datetime()
+
+
+eventreg 
+
+user_id event_id 
+
+
+
+
+Bulletin Board
+
+Post 
+post_id creator_id time content 
+
+
+Discussion Board
+
+
+Thread 
+thread_id creator_id time content 
+
+reply 
+thread_id reply_id user_id time content
+
+
+
+
+
+Admin  
+
+
+
+
+
+
+
+
+CREATE TABLE discussion (
+   post_id INTEGER NOT NULL
+     AUTO_INCREMENT KEY,
+   user_id INTEGER,
+   name VARCHAR(128),
+   content VARCHAR(255),
+   time DATETIME,
+   CONSTRAINT user_id_fk_1
+      FOREIGN KEY (user_id)
+      REFERENCES users (user_id)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT name_fk_2
+      FOREIGN KEY (name) 
+      REFERENCES users (name) 
+      ON DELETE CASCADE ON UPDATE CASCADE,
+      PRIMARY KEY(post_id) ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+CREATE TABLE replies (
+   reply_id INTEGER NOT NULL
+     AUTO_INCREMENT,
+   post_id INTEGER,
+   user_id INTEGER,
+   name VARCHAR(128),
+   content VARCHAR(255),
+   time DATETIME,
+   CONSTRAINT post_id_fk_1
+      FOREIGN KEY (post_id)
+      REFERENCES discussion (post_id)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT user_id_fk_2
+      FOREIGN KEY (user_id)
+      REFERENCES users (user_id)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT name_fk_3
+      FOREIGN KEY (name) 
+      REFERENCES users (name) 
+      ON DELETE CASCADE ON UPDATE CASCADE,
+      PRIMARY KEY(reply_id) ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+   INDEX(post_id)
+) ENGINE=InnoDB CHARSET=utf8;
+
+
+CREATE TABLE users (
+   user_id INTEGER NOT NULL
+     AUTO_INCREMENT KEY,
+   name VARCHAR(128),
+   email VARCHAR(128),
+   password VARCHAR(128),
+   INDEX(email)
+) ENGINE=InnoDB CHARSET=utf8;
+
+
+
+
+
+Salting
+Change variable names 
+Password must contain 
+Put my course list and options
